@@ -100,18 +100,19 @@ Use the public IP to connect via RDP on your local device.
 
 
 <b>Creating a new VM on the existing subnet
-</b></br>$vm2Params = @<br />
-  ResourceGroupName = 'TutorialResources'<br />
-  Name = 'TutorialVM2'<br />
-  ImageName = 'Win2016Datacenter'<br />
-  VirtualNetworkName = 'TutorialVM1'<br />
-  SubnetName = 'TutorialVM1'<br />
-  PublicIpAddressName = 'tutorialPublicIp2'</br>
-  Credential = $cred<br />
-  OpenPorts = 3389<br />
-}<br />
-$newVM2 = New-AzVM @vm2Params<br />
-$newVM2
+</b></br>
+        $vm2Params = @<br />
+        ResourceGroupName = 'TutorialResources'<br />
+        Name = 'TutorialVM2'<br />
+        ImageName = 'Win2016Datacenter'<br />
+        VirtualNetworkName = 'TutorialVM1'<br />
+        SubnetName = 'TutorialVM1'<br />
+        PublicIpAddressName = 'tutorialPublicIp2'</br>
+        Credential = $cred<br />
+        OpenPorts = 3389<br />
+        }<br />
+        $newVM2 = New-AzVM @vm2Params<br />
+        $newVM2
 
 Notice we did not indicate the Location and the but referenced the existing VirtualNetworkName of TutorialVM1 and the existing subnetName of TutorialVM1
 
