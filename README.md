@@ -80,17 +80,17 @@ New-AzStorageContainer -Name "ContainerName" -Permission Off
 
 <b>Step 3: Create a vm
 </b></br>Lets use Powershell splatting to pass parameters to the Azure PowerShell cmdlets<br />
-$vmParams = @{<br />
-  ResourceGroupName = 'TutorialResources'<br />
-  Name = 'TutorialVM1'<br />
-  Location = 'eastus'<br />
-  ImageName = 'Win2016Datacenter'<br />
-  PublicIpAddressName = 'tutorialPublicIp'</br>
-  Credential = $cred<br />
-  OpenPorts = 3389<br />
-  Size = 'Standard_D2s_v3'<br />
-}<br />
-$newVM1 = New-AzVM @vmParams
+    $vmParams = @{<br />
+    ResourceGroupName = 'TutorialResources'<br />
+    Name = 'TutorialVM1'<br />
+    Location = 'eastus'<br />
+    ImageName = 'Win2016Datacenter'<br />
+    PublicIpAddressName = 'tutorialPublicIp'</br>
+    Credential = $cred<br />
+    OpenPorts = 3389<br />
+    Size = 'Standard_D2s_v3'<br />
+    }<br />
+    $newVM1 = New-AzVM @vmParams
 
 
 <b>Verify VM name and admin account
