@@ -80,39 +80,39 @@ New-AzStorageContainer -Name "ContainerName" -Permission Off
 
 <b>Step 3: Create a vm
 </b></br>Lets use Powershell splatting to pass parameters to the Azure PowerShell cmdlets<br />
-    $vmParams = @{<br />
-    ResourceGroupName = 'TutorialResources'<br />
-    Name = 'TutorialVM1'<br />
-    Location = 'eastus'<br />
-    ImageName = 'Win2016Datacenter'<br />
-    PublicIpAddressName = 'tutorialPublicIp'</br>
-    Credential = $cred<br />
-    OpenPorts = 3389<br />
-    Size = 'Standard_D2s_v3'<br />
-    }<br />
-    $newVM1 = New-AzVM @vmParams
 
+$vmParams = @{<br />
+ResourceGroupName = 'TutorialResources'<br />
+Name = 'TutorialVM1'<br />
+Location = 'eastus'<br />
+ImageName = 'Win2016Datacenter'<br />
+PublicIpAddressName = 'tutorialPublicIp'</br>
+Credential = $cred<br />
+OpenPorts = 3389<br />
+Size = 'Standard_D2s_v3'<br />
+}<br />
+$newVM1 = New-AzVM @vmParams
 
 <b>Verify VM name and admin account
 </b><br />$newVM1.OSProfile | Select-Object -Property ComputerName, AdminUserName
 
 Use the public IP to connect via RDP on your local device.
 
-
 <b>Creating a new VM on the existing subnet
 </b></br>
-        $vm2Params = @<br />
-        ResourceGroupName = 'TutorialResources'<br />
-        Name = 'TutorialVM2'<br />
-        ImageName = 'Win2016Datacenter'<br />
-        VirtualNetworkName = 'TutorialVM1'<br />
-        SubnetName = 'TutorialVM1'<br />
-        PublicIpAddressName = 'tutorialPublicIp2'</br>
-        Credential = $cred<br />
-        OpenPorts = 3389<br />
-        }<br />
-        $newVM2 = New-AzVM @vm2Params<br />
-        $newVM2
+
+$vm2Params = @<br />
+ResourceGroupName = 'TutorialResources'<br />
+Name = 'TutorialVM2'<br />
+ImageName = 'Win2016Datacenter'<br />
+VirtualNetworkName = 'TutorialVM1'<br />
+SubnetName = 'TutorialVM1'<br />
+PublicIpAddressName = 'tutorialPublicIp2'</br>
+Credential = $cred<br />
+OpenPorts = 3389<br />
+}<br />
+$newVM2 = New-AzVM @vm2Params<br />
+$newVM2
 
 Notice we did not indicate the Location and the but referenced the existing VirtualNetworkName of TutorialVM1 and the existing subnetName of TutorialVM1
 
